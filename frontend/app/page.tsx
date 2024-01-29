@@ -1,3 +1,4 @@
+import { Component } from './Component';
 import styles from "./page.module.css";
 
 function Weather() {
@@ -30,7 +31,7 @@ function Irrigation() {
   return (
     <>
       <h1>Irrigation Plans:</h1>
-      <div className={styles.subtext}><a>View More</a></div>
+      <div className={styles.subtext}><a href="/irrigation">View More</a></div>
     </>
   )
 }
@@ -39,7 +40,7 @@ function Recomendations() {
   return (
     <>
       <h1>Crop Recomendations:</h1>
-      <div className={styles.subtext}><a>View More</a></div>
+      <div className={styles.subtext}><a href="/recomend">View More</a></div>
     </>
   )
 }

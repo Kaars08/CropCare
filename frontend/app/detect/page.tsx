@@ -1,5 +1,7 @@
+import Component from "../Component";
+
 function Detect() {
-  return <div>detecting</div>;
+  return <Component>detecting</Component>;
 }
 
 export default Detect;
