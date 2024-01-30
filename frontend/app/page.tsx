@@ -1,68 +1,58 @@
-import { Component } from './Component';
-import styles from "./page.module.css";
+'use client';
 
-function Weather() {
-  return (
-    <>
-      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-    </>
-  )
-}
+import styles from './page.module.css';
+import { useState, useEffect } from 'react';
+import { userId } from '@/atoms/userId';
+import { useAtom } from 'jotai';
 
-function Forecast() {
-  return (
-    <>
-      <h1>Weather Forecast:</h1>
-      <div className={styles.subtext}><a href="/forecast">View More</a></div>
-    </>
-  )
-}
+import Login from '@/components/Login';
+import Sidebar from '@/components/Sidebar';
+import SidebarMinimal from '@/components/SidebarMinimal';
 
-function Disease() {
-  return (
-    <>
-      <h1>Disease:</h1>
-      <div className={styles.subtext}><a href="/forecast">View More</a></div>
-    </>
-  )
-}
+function App() {
+  const [loading, setLoading] = useState(true);
+  const [id, setId] = useAtom(userId);
 
-function Irrigation() {
-  return (
-    <>
-      <h1>Irrigation Plans:</h1>
-      <div className={styles.subtext}><a href="/irrigation">View More</a></div>
-    </>
-  )
-}
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    setId(userId);
+    setLoading(false);
+  }, [id]);
 
-function Recomendations() {
-  return (
-    <>
-      <h1>Crop Recomendations:</h1>
-      <div className={styles.subtext}><a href="/recomend">View More</a></div>
-    </>
-  )
-}
-
-export default function Home() {
-  return (
-    <div className={styles.root}>
-      <div className={styles.fullWidth}>
-        <Weather />
+  if (loading) {
+    return (
+      <div className={styles.rootLayout}>
+        <div className={styles.sidebar}>
+          <SidebarMinimal />
+        </div>
+        <div className={styles.content}></div>
       </div>
-      <div>
-        <div><Forecast /></div>
+    )
+  }
+
+  if (id) {
+    return (
+      <div className={styles.rootLayout}>
+        <div className={styles.sidebar}>
+          <Sidebar />
+        </div>
+        <div className={styles.content}>
+          You have logged in
+        </div>
       </div>
-      <div>
-        <div><Disease /></div>
+    );
+  }
+
+  return (
+    <div className={styles.rootLayout}>
+      <div className={styles.sidebar}>
+        <SidebarMinimal />
       </div>
-      <div>
-        <div><Irrigation /></div>
+      <div className={styles.content}>
+        <Login />
       </div>
-      <div>
-        <div><Recomendations /></div>
-      </div>
-    </div >
-  );
-}
+    </div>
+  )
+};
+
+export default App;

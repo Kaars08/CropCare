@@ -1,9 +1,10 @@
+import styles from "../page.module.css"
+import Sidebar from "@/components/Sidebar";
+
 function Forecast() {
   return (
-    <>
-      Forecast
-    </>
-  )
+
+  );
 }
 
 export default Forecast;

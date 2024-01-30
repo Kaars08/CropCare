@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from models import db
 from dotenv import load_dotenv
+from flask_cors import CORS
 
 from blueprints.auth import auth
 from blueprints.forecast import forecast
@@ -16,6 +17,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 db.init_app(app)
 
+CORS(app)
 
 app.register_blueprint(auth, url_prefix="/api/auth")
 app.register_blueprint(forecast, url_prefix="/api/forecast")

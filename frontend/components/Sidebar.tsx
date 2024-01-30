@@ -1,6 +1,17 @@
+'use client'
+
 import styles from './Sidebar.module.css'
+import { useAtom } from 'jotai';
+import { userId } from '@/atoms/userId';
 
 function Sidebar() {
+  const [_, setId] = useAtom(userId);
+
+  function logout() {
+    localStorage.removeItem('userId');
+    setId(null);
+  }
+
   return (
     <>
       <a href="/" className={styles.heading}><div>CashCrop</div></a>
@@ -14,7 +25,7 @@ function Sidebar() {
       <a href="/profile" className={styles.buttonHandler}><button className={styles.button}>My Profile</button></a>
       <a href="/settings" className={styles.buttonHandler}><button className={styles.button}>Settings</button></a>
       <a href="/support" className={styles.buttonHandler}><button className={styles.button}>Support</button></a>
-      <div className={styles.buttonHandler}><button className={styles.button}>Logout</button></div>
+      <div className={styles.buttonHandler}><button className={styles.button} onClick={logout}>Logout</button></div>
       <div className={styles.sidebarFooter}>Made by Cyclopse</div>
     </>
   );
