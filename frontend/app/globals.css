@@ -5,3 +5,27 @@
 * {
   margin: 0;
 }
+
+.root-layout {
+  display: flex;
+
+}
+
+.sidebar {
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  outline: 1px solid black;
+  height: 100vh;
+  width: var(--sidebar-width);
+  background-color: #171717;
+  overflow-y: auto;
+
+}
+
+.content {
+  background-color: #dfdfdf;
+  width: calc(100vw - var(--sidebar-width));
+  display: flex;
+  height: 100vh;
+}

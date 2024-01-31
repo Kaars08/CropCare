@@ -18,7 +18,7 @@ function Login() {
     })
       .then(res => res.json())
       .then(data => {
-        localStorage.setItem('userId', data.userId);
+        localStorage.setItem('userId', data.userid);
         setId(data.userId);
       })
   }
