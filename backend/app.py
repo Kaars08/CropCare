@@ -1,8 +1,8 @@
 import os
 from flask import Flask
-from models import db
 from dotenv import load_dotenv
 from flask_cors import CORS
+from models import db
 
 from blueprints.auth import auth
 from blueprints.forecast import forecast
@@ -13,8 +13,9 @@ from blueprints.irrigation import irrigation
 load_dotenv()
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+
 db.init_app(app)
 
 CORS(app)

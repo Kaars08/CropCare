@@ -1,8 +1,13 @@
-from flask import Blueprint
+from flask import Blueprint, request, jsonify
+from dotenv import load_dotenv
+from models import db, User, Geolocation
 
 detect = Blueprint("detect_blueprint", __name__)
 
 
 @detect.route("/")
 def detect_index():
-    return "This is detections"
+    id = request.args.get("id")
+
+    user = User.query.get(id)
+    return jsonify({"Hello": "world"})
