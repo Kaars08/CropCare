@@ -4,7 +4,7 @@ from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import numpy as np
 
 detect = Blueprint("detect_blueprint", __name__)
-model = load_model("../model/model.h5")
+model = load_model("../model/disease_detect_model.h5")
 
 
 def preprocess(image_path, target_size=(225, 225)):

@@ -31,10 +31,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="root-layout">
           <div className="sidebar">
-            <Sidebar loading={loading} />
+            <Sidebar />
           </div>
           <div className="content">
-            {loading ? null : id === null ? <Login /> : <Component>{children}</Component>}
+            {loading ? null : id === null || id === 'undefined' ? <Login /> : <Component>{children}</Component>}
           </div>
         </div>
       </body>

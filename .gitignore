@@ -1,5 +1,5 @@
 # Models
-model.h5
+disease_detect_model.h5
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

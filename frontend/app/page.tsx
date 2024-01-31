@@ -4,9 +4,9 @@ import styles from './page.module.css';
 
 function App() {
   return (
-    <div>
-      eniorstnoiaensrtien    Hello world
-    </div>
+    <h1>
+      Hello user
+    </h1>
   )
 }
 

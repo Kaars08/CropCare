@@ -25,10 +25,19 @@ def register():
     data = request.get_json()
     email = data.get("email")
     password = data.get("password")
+    username = data.get("username")
+    latitude = data.get("latitude")
+    longitude = data.get("longitude")
 
     hashed_password = bcrypt.generate_password_hash(password).decode("utf-8")
-    new_user = User(email=email, password=hashed_password)
+    new_user = User(
+        username=username,
+        email=email,
+        password=hashed_password,
+        latitude=latitude,
+        longitude=longitude,
+    )
     db.session.add(new_user)
     db.session.commit()
 
-    return jsonify({"userid": new_user.id}), 201
+    return jsonify({"userid": new_user.userid}), 201
