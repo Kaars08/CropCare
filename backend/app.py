@@ -1,6 +1,4 @@
-import os
 from flask import Flask
-from dotenv import load_dotenv
 from flask_cors import CORS
 from models import db
 
@@ -10,11 +8,10 @@ from blueprints.detect import detect
 from blueprints.recomend import recomend
 from blueprints.irrigation import irrigation
 
-load_dotenv()
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
-app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+app.config["SECRET_KEY"] = "SECRET_KEY"
 
 db.init_app(app)
 

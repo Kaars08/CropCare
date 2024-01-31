@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { userId } from '@/atoms/userId';
 import { useAtom } from 'jotai';
 import Login from '@/components/Login';
+import Component from "@/components/Component";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,10 +31,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="root-layout">
           <div className="sidebar">
-            <Sidebar />
+            <Sidebar loading={loading} />
           </div>
           <div className="content">
-            {loading ? null : id === null ? <Login /> : children}
+            {loading ? null : id === null ? <Login /> : <Component>{children}</Component>}
           </div>
         </div>
       </body>
