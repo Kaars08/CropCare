@@ -52,5 +52,23 @@ def get_img():
     if user:
         image_data = BytesIO(user.image)
         return send_file(image_data, mimetype="image/jpeg")
-    else:
-        return jsonify({"error": "User not found"}), 404
+    return jsonify({"error": "User not found"}), 404
+
+
+@auth.route("/user")
+def get_user():
+    user_id = request.args.get("user_id")
+
+    user = User.query.get(user_id)
+
+    if user:
+        return jsonify(
+            {
+                "username": user.username,
+                "email": user.email,
+                "latitude": user.latitude,
+                "longitude": user.longitude,
+            }
+        )
+
+    return jsonify({"error": "User not found"}), 404

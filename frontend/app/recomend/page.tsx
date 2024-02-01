@@ -26,16 +26,16 @@ function Recomend() {
       .then(data => {
         setData(data);
       })
-  }, [])
+  }, [id])
 
   return (
     <>
       <h1 className={styles.title}>
-        Recomend
+        Crop Recomendation:
       </h1>
 
       <table className={styles.table}>
-        <thead className={styles.thead}>
+        <thead>
           <tr>
             <th>Nitrogen Content</th>
             <th>Phosphorous Content</th>
@@ -60,17 +60,17 @@ function Recomend() {
               <td>{data.nitrogen}</td>
               <td>{data.phosophorous}</td>
               <td>{data.potassium}</td>
-              <td>{data.temperature.toFixed(2)}</td>
-              <td>{data.humidity.toFixed(2)}</td>
-              <td>{data.ph.toFixed(2)}</td>
-              <td>{data.rainfall.toFixed()}</td>
+              <td>{data.temperature && data.humidity.toFixed(2)}</td>
+              <td>{data.humidity && data.humidity.toFixed(2)}</td>
+              <td>{data.ph && data.ph.toFixed(2)}</td>
+              <td>{data.rainfall && data.rainfall.toFixed(2)}</td>
             </>}
           </tr>
         </tbody>
       </table>
 
       {data && <div className={styles.text}>From this data, we predict that the most optimal crop
-        for your next harvest is <u>{data.prediction}</u></div>}
+        for your next harvest is <u>{data.prediction.charAt(0).toUpperCase() + data.prediction.slice(1)}</u></div>}
     </>
   )
 }

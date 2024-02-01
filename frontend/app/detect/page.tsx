@@ -15,7 +15,6 @@ function Detect() {
     fetch(`http://localhost:5000/api/detect/?user_id=${id}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         setCropStatus(data.prediction)
       })
   }, [id])
@@ -31,7 +30,7 @@ function Detect() {
 
   return (
     <div>
-      <h1 className={styles.title}>Crop Detection:</h1>
+      <h1 className={styles.title}>Disease Detection:</h1>
 
       <div className={styles.info}>
         {cropStatus && cropStatus === 'Rust' && <>
