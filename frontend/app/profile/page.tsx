@@ -61,16 +61,16 @@ function Profile() {
             <div className={styles.leftItem}>Email</div><input type="textbox" value={userData.email} disabled />
           </div>
           <div className={styles.container}>
-            <div className={styles.leftItem}>Country</div><input type="textbox" value={locationData.location.country} disabled />
+            <div className={styles.leftItem}>Country</div><input type="textbox" value={locationData.location && locationData.location.country} disabled />
           </div>
           <div className={styles.container}>
-            <div className={styles.leftItem}>Location</div><input type="textbox" value={`${locationData.location.name}, ${locationData.location.region}`} disabled />
+            <div className={styles.leftItem}>Location</div><input type="textbox" value={locationData.location && `${locationData.location.name}, ${locationData.location.region}`} disabled />
           </div>
           <div className={styles.container}>
-            <div className={styles.leftItem}>Local Time</div><input type="textbox" value={locationData.location.localtime} disabled />
+            <div className={styles.leftItem}>Local Time</div><input type="textbox" value={locationData.location && locationData.location.localtime} disabled />
           </div>
           <div className={styles.container}>
-            <div className={styles.leftItem}>Timezone</div><input type="textbox" value={locationData.location.tz_id} disabled />
+            <div className={styles.leftItem}>Timezone</div><input type="textbox" value={locationData.location && locationData.location.tz_id} disabled />
           </div>
           <div className={styles.container}>
             <div className={styles.leftItem}>Coordinates</div><input type="textbox" value={`${userData.latitude}, ${userData.longitude}`} disabled />

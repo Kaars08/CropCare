@@ -70,7 +70,7 @@ function Recomend() {
       </table>
 
       {data && <div className={styles.text}>From this data, we predict that the most optimal crop
-        for your next harvest is <u>{data.prediction.charAt(0).toUpperCase() + data.prediction.slice(1)}</u></div>}
+        for your next harvest is <u>{data && data.prediction && data.prediction.charAt(0).toUpperCase() + data.prediction.slice(1)}</u></div>}
     </>
   )
 }
