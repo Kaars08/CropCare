@@ -1,6 +1,7 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, send_file
 from flask_bcrypt import Bcrypt
 from models import User, db
+from io import BytesIO
 
 auth = Blueprint("auth_blueprint", __name__)
 bcrypt = Bcrypt()
@@ -15,7 +16,7 @@ def login():
     user = User.query.filter_by(email=email).first()
 
     if user and bcrypt.check_password_hash(user.password, password):
-        return jsonify({"userid": user.id})
+        return jsonify({"userid": user.userid})
     else:
         return jsonify({"error": "Invalid credentials"}), 401
 
@@ -41,3 +42,13 @@ def register():
     db.session.commit()
 
     return jsonify({"userid": new_user.userid}), 201
+
+
+@auth.route("/img/<int:userid>")
+def get_img(userid):
+    user = User.query.get(userid)
+    if user:
+        image_data = BytesIO(user.image)
+        return send_file(image_data, mimetype="image/jpeg")
+    else:
+        return jsonify({"error": "User not found"}), 404
