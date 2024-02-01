@@ -44,9 +44,11 @@ def register():
     return jsonify({"userid": new_user.userid}), 201
 
 
-@auth.route("/img/<int:userid>")
-def get_img(userid):
-    user = User.query.get(userid)
+@auth.route("/img")
+def get_img():
+    user_id = request.args.get("user_id")
+
+    user = User.query.get(user_id)
     if user:
         image_data = BytesIO(user.image)
         return send_file(image_data, mimetype="image/jpeg")

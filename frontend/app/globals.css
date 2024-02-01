@@ -12,7 +12,6 @@
 }
 
 .sidebar {
-  color: #FFF;
   display: flex;
   flex-direction: column;
   outline: 1px solid black;
@@ -20,7 +19,6 @@
   width: var(--sidebar-width);
   background-color: #171717;
   overflow-y: auto;
-
 }
 
 .content {

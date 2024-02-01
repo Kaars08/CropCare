@@ -1,0 +1,32 @@
+.title {
+  font-size: 40px;
+}
+
+.info {
+  padding-top: 40px;
+  font-size: 20px;
+}
+
+.image {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 40px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.indent {
+  padding-top: 30px;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.yellow {
+  color: yellow;
+}

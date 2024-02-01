@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 import numpy as np
 import joblib
 import os
+from models import User
 
 model_path = os.path.abspath("/home/try/Projects/CropCare/model/recomend_model.h5")
 lightgbm_model = joblib.load("../model/crop_recomend_model.pkl")
@@ -11,18 +12,36 @@ recomend = Blueprint("recomend_blueprint", __name__)
 
 @recomend.route("/")
 def recomend_func():
-    N = float(request.args.get("N", 0.0))
-    P = float(request.args.get("P", 0.0))
-    K = float(request.args.get("K", 0.0))
-    temperature = float(request.args.get("temperature", 0.0))
-    humidity = float(request.args.get("humidity", 0.0))
-    ph = float(request.args.get("ph", 0.0))
-    rainfall = float(request.args.get("rainfall", 0.0))
+    userid = request.args.get("userid")
 
-    input_array = np.array([N, P, K, temperature, humidity, ph, rainfall]).reshape(
-        1, -1
-    )
+    user = User.query.get(userid)
 
-    prediction = lightgbm_model.predict(input_array)[0]
+    if user:
+        N = user.N
+        P = user.P
+        K = user.K
+        temperature = user.temperature
+        humidity = user.humidity
+        ph = user.ph
+        rainfall = user.rainfall
 
-    return jsonify({"prediction": prediction})
+        input_array = np.array([N, P, K, temperature, humidity, ph, rainfall]).reshape(
+            1, -1
+        )
+
+        prediction = lightgbm_model.predict(input_array)[0]
+
+        return jsonify(
+            {
+                "prediction": prediction,
+                "nitrogen": N,
+                "phosophorous": P,
+                "potassium": K,
+                "temperature": temperature,
+                "humidity": humidity,
+                "ph": ph,
+                "rainfall": rainfall,
+            }
+        )
+
+    return jsonify({"error": "User not found"})

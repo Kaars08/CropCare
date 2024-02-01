@@ -34,7 +34,9 @@ export default function RootLayout({
             <Sidebar />
           </div>
           <div className="content">
-            {loading ? null : id === null || id === 'undefined' ? <Login /> : <Component>{children}</Component>}
+            <Component>
+              {loading ? null : id === null || id === 'undefined' ? <><Login /></> : <>{children}</>}
+            </Component>
           </div>
         </div>
       </body>

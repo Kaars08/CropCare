@@ -25,7 +25,7 @@ def preprocess(image, target_size=(225, 225)):
 def detect_index():
     user_id = request.args.get("user_id")
 
-    img_response = requests.get(f"http://localhost:5000/api/auth/img/{user_id}")
+    img_response = requests.get(f"http://localhost:5000/api/auth/img?user_id={user_id}")
 
     if img_response.status_code != 200:
         return jsonify({"error": "Failed to fetch image"}), img_response.status_code

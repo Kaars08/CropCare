@@ -22,8 +22,7 @@ function Sidebar() {
       <a href="/irrigation" className={styles.buttonHandler}><button className={styles.button}>Irrigation Plan</button></a>
       <div className={styles.sidebarItemTitle}>ACCOUNT</div>
       <a href="/profile" className={styles.buttonHandler}><button className={styles.button}>My Profile</button></a>
-      <a href="/settings" className={styles.buttonHandler}><button className={styles.button}>Settings</button></a>
-      <a href="/support" className={styles.buttonHandler}><button className={styles.button}>Support</button></a>
+      <a href="/about" className={styles.buttonHandler}><button className={styles.button}>About</button></a>
       <div className={styles.buttonHandler}><button className={styles.button} onClick={logout}>Logout</button></div>
       <div className={styles.sidebarFooter}>Made by Cyclopse</div>
     </>

@@ -25,21 +25,19 @@ function Login() {
 
   return (
     <>
-      <div className={styles.box}>
-        <div className={styles.title}>
-          Sign In
-        </div>
-        <div className={styles.form}>
-          <form onSubmit={formSubmit} >
-            <div>
-              <input type="email" placeholder="Email:" onChange={e => setEmail(e.target.value)} value={email} />
-            </div>
-            <div>
-              <input type="password" placeholder="Password:" onChange={e => setPassword(e.target.value)} value={password} />
-            </div>
-            <div><input type="submit" value="Log in" /></div>
-          </form>
-        </div>
+      <div className={styles.title}>
+        Sign In
+      </div>
+      <div className={styles.form}>
+        <form onSubmit={formSubmit} >
+          <div>
+            <input type="email" placeholder="Email:" onChange={e => setEmail(e.target.value)} value={email} />
+          </div>
+          <div>
+            <input type="password" placeholder="Password:" onChange={e => setPassword(e.target.value)} value={password} />
+          </div>
+          <div><input type="submit" value="Log in" /></div>
+        </form>
       </div>
     </>
   );
