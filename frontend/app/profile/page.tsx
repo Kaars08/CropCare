@@ -52,7 +52,7 @@ function Profile() {
         <img src='/person-circle.svg' width={70} className={styles.image} />
       </div>
 
-      {userData && locationData &&
+      {userData && locationData && userData.latitude && userData.longitude &&
         <>
           <div className={styles.container}>
             <div className={styles.leftItem}>Username</div><input type="textbox" value={userData.username} disabled />
@@ -73,7 +73,15 @@ function Profile() {
             <div className={styles.leftItem}>Timezone</div><input type="textbox" value={locationData.location && locationData.location.tz_id} disabled />
           </div>
           <div className={styles.container}>
-            <div className={styles.leftItem}>Coordinates</div><input type="textbox" value={`${userData.latitude}, ${userData.longitude}`} disabled />
+            <div className={styles.leftItem}>Coordinates</div><input type="textbox" value={userData && `${userData.latitude}, ${userData.longitude}`} disabled />
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: "50px" }}>
+            <iframe width="800" height="600" src={`https://www.openstreetmap.org/export/embed.html?bbox=${userData && userData.longitude}%2C${userData.latitude}%2C${userData.longitude}%2C${userData.latitude}&amp;layer=hot`} style={{ border: "1px solid black" }} />
+            <br />
+            <small>
+              <a href={`https://www.openstreetmap.org/#map=18/${userData.latitude}/${userData.longitude}&amp;layers=H`}>View Larger Map</a>
+            </small>
           </div>
         </>
       }

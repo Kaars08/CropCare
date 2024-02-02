@@ -44,6 +44,7 @@ function Detect() {
             spread the disease throughout the garden. For more info,
             check <a href="https://www.csrorganics.com/how-to-treat-rust-disease-in-plants-organically">here</a>.</div>
         </>}
+
         {cropStatus && cropStatus === 'Healthy' && <>
           <h2 className={styles.green}>Your Crop is found to be <u>Healthy</u></h2>
           <div className={styles.indent}>Your crops are found to be in good condition and there are no
@@ -51,10 +52,10 @@ function Detect() {
           </div>
         </>}
         {cropStatus && cropStatus === 'Powdery' && <>
-          <h2 className={styles.green}>Your Crop is found to have <u>Powdery Mildew</u></h2>
+          <h2 className={styles.yellow}>Your Crop is found to have <u>Powdery Mildew</u></h2>
           <div className={styles.indent}>While this is not extremely dangerous, it is still better that you take care of it.</div>
           <div className={styles.indent}>Sulphur fungicides (like Bonide Sulfur Plant Fungicide) or Copper fungicides (like
-            BONIDE Copper Fungicide Dust) can be used to control it's growth. For more info,
+            BONIDE Copper Fungicide Dust) must be used to control it's growth. For more info,
             check <a href="https://www.arbico-organics.com/category/powdery-mildew-control#:~:text=Sulfur%20(Bonide%20Sulfur%20Plant%20Fungicide,control%20of%20powdery%20mildew%20issues.">
               here
             </a>.</div>
