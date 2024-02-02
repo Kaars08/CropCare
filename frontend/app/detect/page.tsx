@@ -12,20 +12,24 @@ function Detect() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/detect/?user_id=${id}`)
-      .then(res => res.json())
-      .then(data => {
-        setCropStatus(data.prediction)
-      })
+    if (typeof window !== 'undefined') {
+      fetch(`http://localhost:5000/api/detect/?user_id=${id}`)
+        .then(res => res.json())
+        .then(data => {
+          setCropStatus(data.prediction)
+        })
+    }
   }, [id])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/auth/img?user_id=${id}`)
-      .then(res => res.blob())
-      .then(data => {
-        setLoading(false);
-        setImageData(data);
-      })
+    if (typeof window !== 'undefined') {
+      fetch(`http://localhost:5000/api/auth/img?user_id=${id}`)
+        .then(res => res.blob())
+        .then(data => {
+          setLoading(false);
+          setImageData(data);
+        })
+    }
   }, [id]);
 
   return (

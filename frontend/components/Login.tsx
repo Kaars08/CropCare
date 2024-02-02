@@ -39,6 +39,12 @@ function Login() {
           <div><input type="submit" value="Log in" /></div>
         </form>
       </div>
+
+      <h2>Demo users:</h2>
+      <div style={{ paddingTop: "15px" }}><span style={{ color: "#111", fontWeight: "bold" }}>User 1:</span> user@example.com <span style={{ color: "#111", fontWeight: "bold" }}>password:</span> password</div>
+      <div style={{ paddingTop: "15px" }}><span style={{ color: "#111", fontWeight: "bold" }}>User 2:</span> test@example.com <span style={{ color: "#111", fontWeight: "bold" }}>password:</span> password</div>
+      <div style={{ paddingTop: "15px" }}><span style={{ color: "#111", fontWeight: "bold" }}>User 3:</span> john@example.com <span style={{ color: "#111", fontWeight: "bold" }}>password:</span> password</div>
+      <div style={{ paddingTop: "15px" }}><span style={{ color: "#111", fontWeight: "bold" }}>User 4:</span> alice@example.com <span style={{ color: "#111", fontWeight: "bold" }}>password</span>: password</div>
     </>
   );
 }
