@@ -1,0 +1,13 @@
+.wrapper {
+  margin: 40px;
+  height: calc(100vh - 80px);
+  width: calc(100vw - var(--sidebar-width) - 80px);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+}
+
+.wrapper>div {
+  padding: 40px;
+}
